@@ -1,0 +1,10 @@
+node_modules/
+.npm-cache/
+
+# Superseded image-generation and transparency experiments
+assets/blackhole-chroma-v1.png
+assets/blackhole-realistic-v1.png
+assets/blackhole-realistic-v2.png
+assets/blackhole-animated-transparent.png
+assets/blackhole-animated-transparent.webp
+assets/blackhole-original-loop.gif

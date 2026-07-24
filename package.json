@@ -1,0 +1,13 @@
+{
+  "name": "m87-black-hole-pet",
+  "version": "0.1.0",
+  "description": "A draggable M87* inspired desktop pet built with Electron and Canvas 2D.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check main.js && node --check preload.js && node --check renderer/app.js && node --check renderer/blackhole.js && node --check renderer/file-effects.js && node --check renderer/particles.js && node --check renderer/state.js"
+  },
+  "devDependencies": {
+    "electron": "^37.2.0"
+  }
+}
