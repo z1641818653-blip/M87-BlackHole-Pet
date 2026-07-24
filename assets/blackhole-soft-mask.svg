@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 346" preserveAspectRatio="none">
+  <defs>
+    <filter id="wide-feather" x="-20%" y="-30%" width="140%" height="160%">
+      <feGaussianBlur stdDeviation="23"/>
+    </filter>
+    <filter id="edge-feather" x="-14%" y="-22%" width="128%" height="144%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="lower-feather" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <!-- Upper lens and the horizontal disk: the lower edge curls inward quickly. -->
+  <path
+    d="M18 173
+       C96 160 130 132 176 92
+       C215 50 255 28 300 28
+       C345 28 385 50 424 92
+       C470 132 504 160 582 173
+       C505 183 454 192 400 201
+       C360 208 332 220 300 232
+       C268 220 240 208 200 201
+       C146 192 95 183 18 173 Z"
+    fill="white"
+    opacity="0.45"
+    filter="url(#wide-feather)"
+  />
+  <path
+    d="M38 173
+       C108 159 143 132 185 97
+       C222 59 259 40 300 40
+       C341 40 378 59 415 97
+       C457 132 492 159 562 173
+       C490 182 441 190 390 199
+       C353 206 328 216 300 228
+       C272 216 247 206 210 199
+       C159 190 110 182 38 173 Z"
+    fill="white"
+    opacity="0.8"
+    filter="url(#edge-feather)"
+  />
+  <path
+    d="M76 173
+       C137 154 164 124 200 98
+       C231 72 264 58 300 58
+       C336 58 369 72 400 98
+       C436 124 463 154 524 173
+       C454 181 410 190 370 200
+       C341 207 321 216 300 224
+       C279 216 259 207 230 200
+       C190 190 146 181 76 173 Z"
+    fill="white"
+  />
+
+  <!-- Curved bridge beneath the horizontal disk. It extends outward first,
+       then narrows toward the lower lensed image instead of leaving a cut. -->
+  <path
+    d="M58 168
+       C157 171 211 184 254 204
+       C274 213 288 218 300 221
+       C312 218 326 213 346 204
+       C389 184 443 171 542 168
+       L542 184
+       C461 188 415 197 378 211
+       C345 223 323 232 300 237
+       C277 232 255 223 222 211
+       C185 197 139 188 58 184 Z"
+    fill="white"
+    opacity="0.7"
+    filter="url(#edge-feather)"
+  />
+
+  <!-- Separate lower lensed image: wide enough to retain the black halo,
+       but no longer pulls dark triangles toward the left and right tips. -->
+  <ellipse
+    cx="300"
+    cy="211"
+    rx="120"
+    ry="72"
+    fill="white"
+    opacity="0.42"
+    filter="url(#lower-feather)"
+  />
+  <ellipse
+    cx="300"
+    cy="210"
+    rx="96"
+    ry="59"
+    fill="white"
+    opacity="0.86"
+    filter="url(#edge-feather)"
+  />
+  <ellipse
+    cx="300"
+    cy="209"
+    rx="73"
+    ry="49"
+    fill="white"
+  />
+</svg>
