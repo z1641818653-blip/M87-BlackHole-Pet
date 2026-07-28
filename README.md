@@ -2,9 +2,9 @@
 # 引力透镜效果由于现阶段可实现的功能都需要读取桌面覆盖，稳定性差没有实用性就暂时关闭了 后续会继续研发新的方向。
 # M87* Black Hole Desktop Pet
 
-一个以 M87* 为灵感的 Windows 动态黑洞桌宠。
+一个以 M87* 为灵感的 Windows / macOS 动态黑洞桌宠。
 
-它会以透明、无边框、始终置顶的形式悬浮在桌面上。你可以自由拖动黑洞、开关星空、双击触发“斗转星移”，也可以把文件拖入黑洞，播放吞噬动画并按需送入 Windows 回收站。
+它会以透明、无边框、始终置顶的形式悬浮在桌面上。你可以自由拖动黑洞、开关星空、双击触发“斗转星移”，也可以把文件拖入黑洞，播放吞噬动画并按需送入 Windows 回收站或 macOS 废纸篓。
 
 ![M87* 黑洞桌宠动态预览](assets/blackhole-original-loop-fast.gif)
 
@@ -12,7 +12,9 @@
 
 [前往 Releases 下载最新版](../../releases/latest)
 
-下载并解压发布包后：
+### Windows
+
+下载并解压 Windows 发布包后：
 
 1. 确保电脑已安装 [Node.js](https://nodejs.org/)。
 2. 双击 `安装并启动.cmd`。
@@ -20,16 +22,25 @@
 
 如果 Electron 下载速度较慢，安装脚本会使用国内镜像，并把缓存保存在项目自己的 `.npm-cache` 目录，不会修改全局 npm 配置。
 
+### macOS
+
+在仓库的 Actions 页面手动运行 `Build macOS`，或下载该流程最近一次成功运行产生的构建产物：
+
+- `M87-Black-Hole-Pet-mac-arm64`：Apple 芯片（M1/M2/M3/M4）
+- `M87-Black-Hole-Pet-mac-x64`：Intel 芯片
+
+解压后可以使用 `.dmg` 安装，也可以直接解压 `.zip` 中的应用。当前测试版未使用 Apple Developer 证书签名，macOS 首次启动可能会阻止运行。此时可在 Finder 中按住 `Control` 点击应用，选择“打开”，再确认一次。
+
 ## 当前功能
 
 - 透明、无边框、固定尺寸的桌面悬浮窗口
-- Windows 始终置顶，不在任务栏留下额外窗口
+- Windows / macOS 始终置顶；macOS 下隐藏 Dock 图标并显示在所有桌面空间
 - 鼠标左键按住黑洞即可自由拖动
 - 动态吸积盘与保留事件视界结构的柔和透明遮罩
 - 分层动态星空与少量高亮星点
 - 双击黑洞触发一次 360°“斗转星移”和短暂星轨
 - 文件拖入后的螺旋吞噬动画
-- 可选的 Windows 系统回收站接口
+- 可选的系统回收站 / 废纸篓接口
 - 右键菜单中的独立功能开关
 
 ## 操作方法
@@ -46,7 +57,7 @@
 
 - 背景星空
 - 文件吞噬动画
-- Windows 系统回收站
+- 系统回收站 / 废纸篓
 - 恢复默认设置
 - 退出黑洞桌宠
 
@@ -54,7 +65,7 @@
 
 “系统回收站”默认关闭。
 
-第一次开启时，程序会显示确认窗口。开启后，拖入黑洞的文件会通过 Electron 的 `shell.trashItem` 进入 Windows 回收站，而不是永久删除。若回收失败，程序不会使用永久删除作为后备方案。
+第一次开启时，程序会显示确认窗口。开启后，拖入黑洞的文件会通过 Electron 的 `shell.trashItem` 进入 Windows 回收站或 macOS 废纸篓，而不是永久删除。若回收失败，程序不会使用永久删除作为后备方案。
 
 如果只想欣赏桌宠效果，请保持“系统回收站”关闭；文件吞噬动画仍可独立使用。
 
@@ -62,19 +73,38 @@
 
 环境建议：
 
-- Windows 10 或 Windows 11
+- Windows 10/11 或 macOS 12+
 - Node.js 20 或更高版本
 - npm
+
+Windows：
 
 ```powershell
 npm.cmd install --cache="$PWD\.npm-cache" --registry="https://registry.npmmirror.com"
 npm.cmd start
 ```
 
+macOS：
+
+```bash
+npm install
+npm start
+```
+
 检查 JavaScript 语法：
 
-```powershell
-npm.cmd run check
+```bash
+npm run check
+```
+
+在 Mac 本机生成安装包：
+
+```bash
+# Apple 芯片
+npm run build:mac:arm64
+
+# Intel 芯片
+npm run build:mac:x64
 ```
 
 ## 项目结构
@@ -95,6 +125,7 @@ M87-BlackHole-Pet/
 ├── main.js
 ├── preload.js
 ├── package.json
+├── .github/workflows/build-macos.yml
 ├── 安装并启动.cmd
 └── 启动桌宠.vbs
 ```
@@ -114,11 +145,10 @@ M87-BlackHole-Pet/
 - 可选的轻量引力透镜
 - Stable / Feeding / Active / Cooling 状态机
 - 文件大小驱动的亮度、速度与粒子反馈
-- 独立 Windows 安装包
+- Windows / macOS 独立安装包与正式签名
 
 ## 图像与版权说明
 
 程序代码与视觉素材是两个独立部分。仓库中的黑洞 GIF 来自项目开发阶段使用的外部视觉参考素材，当前主要用于个人学习和非商业原型展示；其原始权利归对应作者或权利人所有。
 
 在重新分发、商业使用或制作正式安装包前，请自行确认图像素材的授权范围，或替换为拥有明确许可的素材。
-

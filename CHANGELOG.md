@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- 增加 macOS 窗口呈现适配：隐藏 Dock 图标并支持所有桌面空间
+- 将文件回收相关文案适配为 Windows 回收站和 macOS 废纸篓
+- 增加 Apple Silicon 与 Intel Mac 的 DMG / ZIP 打包命令
+- 增加 GitHub Actions macOS 双架构自动构建流程
+
 ## v0.1.0 — 2026-07-24
 
 首个可公开下载的稳定版本。
