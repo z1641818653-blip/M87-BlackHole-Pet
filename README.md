@@ -12,9 +12,9 @@
 
 | 系统 | 设备 | 下载 |
 | --- | --- | --- |
-| Windows | Windows 10/11 x64 | [下载 v0.1.0 EXE 安装包](../../releases/download/v0.1.0/M87.Black.Hole.Pet.Setup.0.1.0.exe) |
-| macOS | Apple 芯片（M1/M2/M3/M4） | [下载 arm64 测试包](../../actions/runs/30346573786) |
-| macOS | Intel 芯片 | [下载 x64 测试包](../../actions/runs/30346573786) |
+| Windows | Windows 10/11 x64 | [下载 v0.1.0 EXE 安装包](https://github.com/z1641818653-blip/M87-BlackHole-Pet/releases/download/v0.1.0/M87.Black.Hole.Pet.Setup.0.1.0.exe) |
+| macOS | Apple 芯片（M1/M2/M3/M4） | [下载 arm64 测试包](https://github.com/z1641818653-blip/M87-BlackHole-Pet/actions/runs/30346573786) |
+| macOS | Intel 芯片 | [下载 x64 测试包](https://github.com/z1641818653-blip/M87-BlackHole-Pet/actions/runs/30346573786) |
 
 ### Windows
 
