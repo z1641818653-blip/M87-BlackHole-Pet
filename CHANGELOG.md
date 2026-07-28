@@ -6,7 +6,7 @@
 - 将文件回收相关文案适配为 Windows 回收站和 macOS 废纸篓
 - 增加 Apple Silicon 与 Intel Mac 的 DMG / ZIP 打包命令
 - 增加 GitHub Actions macOS 双架构自动构建流程
-- 使用 macOS 临时签名，并在发布前校验 DMG 和应用签名
+- 使用打包后 macOS 临时签名，并在发布前校验 DMG 和应用签名
 
 ## v0.1.0 — 2026-07-24
 
