@@ -10,26 +10,26 @@
 
 ## 下载
 
-[前往 Releases 下载最新版](../../releases/latest)
+| 系统 | 设备 | 下载 |
+| --- | --- | --- |
+| Windows | Windows 10/11 x64 | [下载 v0.1.0 EXE 安装包](../../releases/download/v0.1.0/M87.Black.Hole.Pet.Setup.0.1.0.exe) |
+| macOS | Apple 芯片（M1/M2/M3/M4） | [下载 arm64 测试包](../../actions/runs/30346573786) |
+| macOS | Intel 芯片 | [下载 x64 测试包](../../actions/runs/30346573786) |
 
 ### Windows
 
-下载并解压 Windows 发布包后：
-
-1. 确保电脑已安装 [Node.js](https://nodejs.org/)。
-2. 双击 `安装并启动.cmd`。
-3. 第一次运行需要联网下载 Electron，后续可直接双击 `启动桌宠.vbs`。
-
-如果 Electron 下载速度较慢，安装脚本会使用国内镜像，并把缓存保存在项目自己的 `.npm-cache` 目录，不会修改全局 npm 配置。
+下载 `.exe` 后双击安装即可。源码版仍可使用仓库中的 `安装并启动.cmd` 和 `启动桌宠.vbs`。
 
 ### macOS
 
-在仓库的 Actions 页面手动运行 `Build macOS`，或下载该流程最近一次成功运行产生的构建产物：
+打开上表中的 Mac 下载页面，在页面底部的 `Artifacts` 区域选择：
 
 - `M87-Black-Hole-Pet-mac-arm64`：Apple 芯片（M1/M2/M3/M4）
 - `M87-Black-Hole-Pet-mac-x64`：Intel 芯片
 
-解压后可以使用 `.dmg` 安装，也可以直接解压 `.zip` 中的应用。当前测试版未使用 Apple Developer 证书签名，macOS 首次启动可能会阻止运行。此时可在 Finder 中按住 `Control` 点击应用，选择“打开”，再确认一次。
+Mac 包目前是 PR 的测试构建产物；实机验证完成后会移动到与 Windows 相同的 Releases 下载页。解压后可以使用 `.dmg` 安装，也可以直接解压 `.zip` 中的应用。
+
+当前测试版未使用 Apple Developer 证书签名，macOS 首次启动可能会阻止运行。此时可在 Finder 中按住 `Control` 点击应用，选择“打开”，再确认一次。
 
 ## 当前功能
 
