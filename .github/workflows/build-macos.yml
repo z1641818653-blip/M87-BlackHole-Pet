@@ -40,6 +40,13 @@ jobs:
       - name: Build macOS package
         run: npm run build:mac -- --${{ matrix.arch }}
 
+      - name: Verify macOS package
+        run: |
+          hdiutil verify dist/*.dmg
+          app_path="$(find "dist/mac-${{ matrix.arch }}" -maxdepth 1 -name '*.app' -print -quit)"
+          test -n "$app_path"
+          codesign --verify --deep --strict --verbose=2 "$app_path"
+
       - name: Upload package
         uses: actions/upload-artifact@v4
         with:

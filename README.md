@@ -29,7 +29,13 @@
 
 Mac 包目前是 PR 的测试构建产物；实机验证完成后会移动到与 Windows 相同的 Releases 下载页。解压后可以使用 `.dmg` 安装，也可以直接解压 `.zip` 中的应用。
 
-当前测试版未使用 Apple Developer 证书签名，macOS 首次启动可能会阻止运行。此时可在 Finder 中按住 `Control` 点击应用，选择“打开”，再确认一次。
+当前测试版使用临时签名，但尚未经过 Apple 公证，macOS 首次启动仍可能阻止运行。先把应用拖入“应用程序”文件夹，再在 Finder 中按住 `Control` 点击应用，选择“打开”，然后确认一次。
+
+如果仍提示应用已损坏，可在终端执行下面的命令清除这个测试版的隔离标记，然后重新打开：
+
+```bash
+xattr -cr "/Applications/M87 Black Hole Pet.app"
+```
 
 ## 当前功能
 

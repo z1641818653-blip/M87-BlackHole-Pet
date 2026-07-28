@@ -34,7 +34,7 @@
         "zip"
       ],
       "category": "public.app-category.utilities",
-      "identity": null,
+      "identity": "-",
       "hardenedRuntime": false,
       "artifactName": "${productName}-${version}-mac-${arch}.${ext}"
     }
