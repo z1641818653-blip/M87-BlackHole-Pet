@@ -125,7 +125,7 @@ pet.addEventListener("drop", async (event) => {
     return;
   }
 
-  showStatus("正在送入 Windows 回收站…", false, 5000);
+  showStatus("正在移入系统回收站或废纸篓…", false, 5000);
   const result = await window.desktopPet.trashPaths(filePaths);
   if (result.ok) {
     showStatus(`已安全回收 ${result.succeeded} 个项目`);

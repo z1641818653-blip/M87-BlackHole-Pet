@@ -21,6 +21,10 @@ const DEFAULT_SETTINGS = Object.freeze({
   recycleBin: false
 });
 
+function getTrashName() {
+  return process.platform === "darwin" ? "废纸篓" : "回收站";
+}
+
 function getSettingsPath() {
   return path.join(app.getPath("userData"), "pet-settings.json");
 }
@@ -62,13 +66,14 @@ function setSetting(key, value) {
 }
 
 async function confirmRecycleBinEnable() {
+  const trashName = getTrashName();
   const result = await dialog.showMessageBox(petWindow, {
     type: "warning",
-    buttons: ["取消", "启用安全回收站"],
+    buttons: ["取消", `启用安全${trashName}`],
     defaultId: 0,
     cancelId: 0,
-    title: "启用系统回收站",
-    message: "拖入黑洞的文件将被移动到 Windows 回收站。",
+    title: `启用系统${trashName}`,
+    message: `拖入黑洞的文件将被移动到系统${trashName}。`,
     detail: "不会永久删除文件。若系统回收失败，文件会保持原状。"
   });
   return result.response === 1;
@@ -96,7 +101,7 @@ function showContextMenu() {
     { type: "separator" },
     featureItem("背景星空", "backgroundStars"),
     featureItem("文件吞噬动画", "swallowAnimation"),
-    featureItem("启用系统回收站", "recycleBin"),
+    featureItem(`启用系统${getTrashName()}`, "recycleBin"),
     { type: "separator" },
     {
       label: "恢复默认设置",
@@ -156,6 +161,12 @@ function createWindow() {
     petWindow.setBackgroundColor("#00000000");
     petWindow.setAlwaysOnTop(true, "screen-saver", 1);
     petWindow.setSkipTaskbar(true);
+    if (process.platform === "darwin") {
+      petWindow.setVisibleOnAllWorkspaces(true, {
+        visibleOnFullScreen: true,
+        skipTransformProcessType: true
+      });
+    }
   };
 
   enforceWindowPresentation();
@@ -247,6 +258,9 @@ ipcMain.handle("trash-files", async (_event, filePaths) => {
 });
 
 app.whenReady().then(() => {
+  if (process.platform === "darwin") {
+    app.dock?.hide();
+  }
   settings = loadSettings();
   createWindow();
 });

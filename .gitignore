@@ -1,5 +1,6 @@
 node_modules/
 .npm-cache/
+dist/
 
 # Superseded image-generation and transparency experiments
 assets/blackhole-chroma-v1.png

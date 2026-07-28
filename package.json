@@ -5,9 +5,39 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "check": "node --check main.js && node --check preload.js && node --check renderer/app.js && node --check renderer/blackhole.js && node --check renderer/file-effects.js && node --check renderer/particles.js && node --check renderer/state.js"
+    "check": "node --check main.js && node --check preload.js && node --check scripts/after-pack.js && node --check renderer/app.js && node --check renderer/blackhole.js && node --check renderer/file-effects.js && node --check renderer/particles.js && node --check renderer/state.js",
+    "build:mac": "electron-builder --mac dmg zip",
+    "build:mac:arm64": "npm run build:mac -- --arm64",
+    "build:mac:x64": "npm run build:mac -- --x64"
   },
   "devDependencies": {
-    "electron": "^37.2.0"
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.m87.blackholepet",
+    "productName": "M87 Black Hole Pet",
+    "asar": true,
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "afterPack": "scripts/after-pack.js",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.utilities",
+      "identity": null,
+      "hardenedRuntime": false,
+      "artifactName": "${productName}-${version}-mac-${arch}.${ext}"
+    }
   }
 }
